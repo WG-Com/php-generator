@@ -117,6 +117,7 @@ class Parameter
 
 
 	/**
+	 * @deprecated  just use setDefaultValue()
 	 * @param  bool
 	 * @return static
 	 */
@@ -133,6 +134,7 @@ class Parameter
 	 */
 	public function isOptional()
 	{
+		trigger_error(__METHOD__ . '() is deprecated, use hasDefaultValue()', E_USER_DEPRECATED);
 		return $this->hasDefaultValue;
 	}
 
@@ -163,6 +165,7 @@ class Parameter
 	public function setDefaultValue($val)
 	{
 		$this->defaultValue = $val;
+		$this->hasDefaultValue = TRUE;
 		return $this;
 	}
 
