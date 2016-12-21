@@ -32,15 +32,16 @@ abstract class Member
 	/**
 	 * @param  string
 	 */
-	public function __construct($name = '')
+	public function __construct($name)
 	{
-		$this->setName($name);
+		$this->name = (string) $name;
 	}
 
 
 	/** @deprecated */
 	public function setName($name)
 	{
+		trigger_error(__METHOD__ . '() is deprecated, use constructor.', E_USER_DEPRECATED);
 		$this->name = (string) $name;
 		return $this;
 	}

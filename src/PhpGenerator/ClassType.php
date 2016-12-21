@@ -356,6 +356,7 @@ class ClassType
 	 */
 	public function setConsts(array $consts)
 	{
+		trigger_error(__METHOD__ . '() is deprecated, use setConstants()', E_USER_DEPRECATED);
 		return $this->setConstants($consts);
 	}
 
@@ -366,6 +367,7 @@ class ClassType
 	 */
 	public function getConsts()
 	{
+		trigger_error(__METHOD__ . '() is deprecated, use similar getConstants()', E_USER_DEPRECATED);
 		return array_map(function ($const) { return $const->getValue(); }, $this->consts);
 	}
 
@@ -378,6 +380,7 @@ class ClassType
 	 */
 	public function addConst($name, $value)
 	{
+		trigger_error(__METHOD__ . '() is deprecated, use similar addConstant()', E_USER_DEPRECATED);
 		$this->addConstant($name, $value);
 		return $this;
 	}
