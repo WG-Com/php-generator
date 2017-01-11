@@ -14,11 +14,13 @@ use Nette;
 
 /**
  * Class property description.
+ *
+ * @property mixed $value
  */
 class Property extends Member
 {
 	/** @var mixed */
-	public $value;
+	private $value;
 
 	/** @var bool */
 	private $static = FALSE;
@@ -48,7 +50,7 @@ class Property extends Member
 	/**
 	 * @return mixed
 	 */
-	public function getValue()
+	public function &getValue()
 	{
 		return $this->value;
 	}
