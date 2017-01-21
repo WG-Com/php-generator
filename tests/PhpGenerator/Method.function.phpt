@@ -4,6 +4,8 @@
  * Test: Nette\PhpGenerator & function.
  */
 
+declare(strict_types=1);
+
 use Nette\PhpGenerator\Method;
 use Tester\Assert;
 
