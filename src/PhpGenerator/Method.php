@@ -205,7 +205,7 @@ class Method extends Member
 	 */
 	public function setStatic(bool $val)
 	{
-		$this->static = (bool) $val;
+		$this->static = $val;
 		return $this;
 	}
 
@@ -221,7 +221,7 @@ class Method extends Member
 	 */
 	public function setFinal(bool $val)
 	{
-		$this->final = (bool) $val;
+		$this->final = $val;
 		return $this;
 	}
 
@@ -237,7 +237,7 @@ class Method extends Member
 	 */
 	public function setAbstract(bool $val)
 	{
-		$this->abstract = (bool) $val;
+		$this->abstract = $val;
 		return $this;
 	}
 
@@ -253,7 +253,7 @@ class Method extends Member
 	 */
 	public function setReturnReference(bool $val)
 	{
-		$this->returnReference = (bool) $val;
+		$this->returnReference = $val;
 		return $this;
 	}
 
@@ -269,7 +269,7 @@ class Method extends Member
 	 */
 	public function setReturnNullable(bool $val)
 	{
-		$this->returnNullable = (bool) $val;
+		$this->returnNullable = $val;
 		return $this;
 	}
 
@@ -285,7 +285,7 @@ class Method extends Member
 	 */
 	public function setVariadic(bool $val)
 	{
-		$this->variadic = (bool) $val;
+		$this->variadic = $val;
 		return $this;
 	}
 

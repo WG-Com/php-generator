@@ -180,7 +180,7 @@ class ClassType
 	 */
 	public function setFinal(bool $state = TRUE)
 	{
-		$this->final = (bool) $state;
+		$this->final = $state;
 		return $this;
 	}
 
@@ -196,7 +196,7 @@ class ClassType
 	 */
 	public function setAbstract(bool $state = TRUE)
 	{
-		$this->abstract = (bool) $state;
+		$this->abstract = $state;
 		return $this;
 	}
 
@@ -236,7 +236,7 @@ class ClassType
 	public function addExtend(string $type)
 	{
 		$this->extends = (array) $this->extends;
-		$this->extends[] = (string) $type;
+		$this->extends[] = $type;
 		return $this;
 	}
 
@@ -266,7 +266,7 @@ class ClassType
 	 */
 	public function addImplement(string $type)
 	{
-		$this->implements[] = (string) $type;
+		$this->implements[] = $type;
 		return $this;
 	}
 
@@ -296,7 +296,7 @@ class ClassType
 	 */
 	public function addTrait(string $trait)
 	{
-		$this->traits[] = (string) $trait;
+		$this->traits[] = $trait;
 		return $this;
 	}
 

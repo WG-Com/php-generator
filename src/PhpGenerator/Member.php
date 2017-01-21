@@ -31,7 +31,7 @@ abstract class Member
 
 	public function __construct(string $name)
 	{
-		$this->name = (string) $name;
+		$this->name = $name;
 	}
 
 
@@ -39,7 +39,7 @@ abstract class Member
 	public function setName($name)
 	{
 		trigger_error(__METHOD__ . '() is deprecated, use constructor.', E_USER_DEPRECATED);
-		$this->name = (string) $name;
+		$this->name = $name;
 		return $this;
 	}
 

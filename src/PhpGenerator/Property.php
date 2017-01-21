@@ -61,7 +61,7 @@ class Property extends Member
 	 */
 	public function setStatic(bool $state = TRUE)
 	{
-		$this->static = (bool) $state;
+		$this->static = $state;
 		return $this;
 	}
 

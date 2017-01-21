@@ -56,7 +56,7 @@ class Parameter
 	 */
 	public function __construct(string $name)
 	{
-		$this->name = (string) $name;
+		$this->name = $name;
 	}
 
 
@@ -64,7 +64,7 @@ class Parameter
 	public function setName(string $name)
 	{
 		trigger_error(__METHOD__ . '() is deprecated, use constructor.', E_USER_DEPRECATED);
-		$this->name = (string) $name;
+		$this->name = $name;
 		return $this;
 	}
 
@@ -80,7 +80,7 @@ class Parameter
 	 */
 	public function setReference(bool $state = TRUE)
 	{
-		$this->reference = (bool) $state;
+		$this->reference = $state;
 		return $this;
 	}
 
@@ -117,7 +117,7 @@ class Parameter
 	 */
 	public function setOptional(bool $state = TRUE)
 	{
-		$this->hasDefaultValue = (bool) $state;
+		$this->hasDefaultValue = $state;
 		return $this;
 	}
 
@@ -137,7 +137,7 @@ class Parameter
 	 */
 	public function setNullable(bool $state = TRUE)
 	{
-		$this->nullable = (bool) $state;
+		$this->nullable = $state;
 		return $this;
 	}
 

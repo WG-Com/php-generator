@@ -49,7 +49,7 @@ class PhpNamespace
 	public function setName(string $name)
 	{
 		trigger_error(__METHOD__ . '() is deprecated, use constructor.', E_USER_DEPRECATED);
-		$this->name = (string) $name;
+		$this->name = $name;
 		return $this;
 	}
 
@@ -69,7 +69,7 @@ class PhpNamespace
 	 */
 	public function setBracketedSyntax(bool $state = TRUE)
 	{
-		$this->bracketedSyntax = (bool) $state;
+		$this->bracketedSyntax = $state;
 		return $this;
 	}
 
