@@ -15,7 +15,7 @@ use Nette;
 /**
  * Method or function description.
  *
- * @property string|FALSE $body
+ * @property string|NULL $body
  */
 class Method extends Member
 {
@@ -25,7 +25,7 @@ class Method extends Member
 	/** @var array of name => bool */
 	private $uses = [];
 
-	/** @var string|FALSE */
+	/** @var string|NULL */
 	private $body = '';
 
 	/** @var bool */
@@ -106,7 +106,8 @@ class Method extends Member
 			. ($this->uses ? ' use (' . implode(', ', $uses) . ')' : '')
 			. ($this->returnType ? ': ' . ($this->returnNullable ? '?' : '')
 				. ($this->namespace ? $this->namespace->unresolveName($this->returnType) : $this->returnType) : '')
-			. ($this->abstract || $this->body === FALSE ? ';'
+			. ($this->abstract || $this->body === NULL
+				? ';'
 				: ($this->getName() ? "\n" : ' ') . "{\n" . Nette\Utils\Strings::indent(ltrim(rtrim($this->body) . "\n"), 1) . '}');
 	}
 
@@ -180,7 +181,7 @@ class Method extends Member
 
 
 	/**
-	 * @param  string|FALSE
+	 * @param  string|NULL
 	 * @return static
 	 */
 	public function setBody($code, array $args = NULL)
@@ -191,7 +192,7 @@ class Method extends Member
 
 
 	/**
-	 * @return string|FALSE
+	 * @return string|NULL
 	 */
 	public function getBody()
 	{

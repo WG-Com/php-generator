@@ -516,7 +516,7 @@ class ClassType
 	{
 		$method = (new Method($name))->setNamespace($this->namespace);
 		if ($this->type === 'interface') {
-			$method->setVisibility(NULL)->setBody(FALSE);
+			$method->setVisibility(NULL)->setBody(NULL);
 		} else {
 			$method->setVisibility('public');
 		}

@@ -70,7 +70,7 @@ class Factory
 			$method->setVisibility($from->isPrivate() ? 'private' : ($from->isProtected() ? 'protected' : ($isInterface ? NULL : 'public')));
 			$method->setFinal($from->isFinal());
 			$method->setAbstract($from->isAbstract() && !$isInterface);
-			$method->setBody($from->isAbstract() ? FALSE : '');
+			$method->setBody($from->isAbstract() ? NULL : '');
 		}
 		$method->setReturnReference($from->returnsReference());
 		$method->setVariadic($from->isVariadic());
