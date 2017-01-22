@@ -54,14 +54,14 @@ class Parameter
 	/**
 	 * @param  string  without $
 	 */
-	public function __construct($name)
+	public function __construct(string $name)
 	{
 		$this->name = (string) $name;
 	}
 
 
 	/** @deprecated */
-	public function setName($name)
+	public function setName(string $name)
 	{
 		trigger_error(__METHOD__ . '() is deprecated, use constructor.', E_USER_DEPRECATED);
 		$this->name = (string) $name;
@@ -69,30 +69,23 @@ class Parameter
 	}
 
 
-	/**
-	 * @return string
-	 */
-	public function getName()
+	public function getName(): string
 	{
 		return $this->name;
 	}
 
 
 	/**
-	 * @param  bool
 	 * @return static
 	 */
-	public function setReference($state = TRUE)
+	public function setReference(bool $state = TRUE)
 	{
 		$this->reference = (bool) $state;
 		return $this;
 	}
 
 
-	/**
-	 * @return bool
-	 */
-	public function isReference()
+	public function isReference(): bool
 	{
 		return $this->reference;
 	}
@@ -120,10 +113,9 @@ class Parameter
 
 	/**
 	 * @deprecated  just use setDefaultValue()
-	 * @param  bool
 	 * @return static
 	 */
-	public function setOptional($state = TRUE)
+	public function setOptional(bool $state = TRUE)
 	{
 		$this->hasDefaultValue = (bool) $state;
 		return $this;
@@ -132,9 +124,8 @@ class Parameter
 
 	/**
 	 * @deprecated  use hasDefaultValue()
-	 * @return bool
 	 */
-	public function isOptional()
+	public function isOptional(): bool
 	{
 		trigger_error(__METHOD__ . '() is deprecated, use hasDefaultValue()', E_USER_DEPRECATED);
 		return $this->hasDefaultValue;
@@ -142,20 +133,16 @@ class Parameter
 
 
 	/**
-	 * @param  bool
 	 * @return static
 	 */
-	public function setNullable($state = TRUE)
+	public function setNullable(bool $state = TRUE)
 	{
 		$this->nullable = (bool) $state;
 		return $this;
 	}
 
 
-	/**
-	 * @return bool
-	 */
-	public function isNullable()
+	public function isNullable(): bool
 	{
 		return $this->nullable;
 	}
@@ -181,10 +168,7 @@ class Parameter
 	}
 
 
-	/**
-	 * @return bool
-	 */
-	public function hasDefaultValue()
+	public function hasDefaultValue(): bool
 	{
 		return $this->hasDefaultValue;
 	}

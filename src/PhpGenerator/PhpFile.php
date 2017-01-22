@@ -53,21 +53,16 @@ class PhpFile
 
 
 	/**
-	 * @param  string
 	 * @return static
 	 */
-	public function addComment($val)
+	public function addComment(string $val)
 	{
 		$this->comment .= $this->comment ? "\n$val" : $val;
 		return $this;
 	}
 
 
-	/**
-	 * @param  string
-	 * @return ClassType
-	 */
-	public function addClass($name)
+	public function addClass(string $name): ClassType
 	{
 		return $this
 			->addNamespace(Helpers::extractNamespace($name))
@@ -75,11 +70,7 @@ class PhpFile
 	}
 
 
-	/**
-	 * @param  string
-	 * @return ClassType
-	 */
-	public function addInterface($name)
+	public function addInterface(string $name): ClassType
 	{
 		return $this
 			->addNamespace(Helpers::extractNamespace($name))
@@ -87,11 +78,7 @@ class PhpFile
 	}
 
 
-	/**
-	 * @param  string
-	 * @return ClassType
-	 */
-	public function addTrait($name)
+	public function addTrait(string $name): ClassType
 	{
 		return $this
 			->addNamespace(Helpers::extractNamespace($name))
@@ -101,9 +88,8 @@ class PhpFile
 
 	/**
 	 * @param  string NULL means global namespace
-	 * @return PhpNamespace
 	 */
-	public function addNamespace($name)
+	public function addNamespace(string $name): PhpNamespace
 	{
 		if (!isset($this->namespaces[$name])) {
 			$this->namespaces[$name] = new PhpNamespace($name);
@@ -115,7 +101,7 @@ class PhpFile
 	/**
 	 * @return string PHP code
 	 */
-	public function __toString()
+	public function __toString(): string
 	{
 		foreach ($this->namespaces as $namespace) {
 			$namespace->setBracketedSyntax(count($this->namespaces) > 1 && isset($this->namespaces[NULL]));

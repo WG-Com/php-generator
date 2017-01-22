@@ -29,10 +29,7 @@ abstract class Member
 	private $comment;
 
 
-	/**
-	 * @param  string
-	 */
-	public function __construct($name)
+	public function __construct(string $name)
 	{
 		$this->name = (string) $name;
 	}
@@ -47,10 +44,7 @@ abstract class Member
 	}
 
 
-	/**
-	 * @return string
-	 */
-	public function getName()
+	public function getName(): string
 	{
 		return $this->name;
 	}
@@ -100,10 +94,9 @@ abstract class Member
 
 
 	/**
-	 * @param  string
 	 * @return static
 	 */
-	public function addComment($val)
+	public function addComment(string $val)
 	{
 		$this->comment .= $this->comment ? "\n$val" : $val;
 		return $this;

@@ -78,10 +78,7 @@ class ClassType
 	}
 
 
-	/**
-	 * @param  string|NULL
-	 */
-	public function __construct($name = NULL, PhpNamespace $namespace = NULL)
+	public function __construct(string $name = NULL, PhpNamespace $namespace = NULL)
 	{
 		$this->setName($name);
 		$this->namespace = $namespace;
@@ -91,7 +88,7 @@ class ClassType
 	/**
 	 * @return string  PHP code
 	 */
-	public function __toString()
+	public function __toString(): string
 	{
 		$consts = [];
 		foreach ($this->consts as $const) {
@@ -160,10 +157,9 @@ class ClassType
 
 
 	/**
-	 * @param  string
 	 * @return static
 	 */
-	public function setType($type)
+	public function setType(string $type)
 	{
 		if (!in_array($type, ['class', 'interface', 'trait'], TRUE)) {
 			throw new Nette\InvalidArgumentException('Argument must be class|interface|trait.');
@@ -173,50 +169,39 @@ class ClassType
 	}
 
 
-	/**
-	 * @return string
-	 */
-	public function getType()
+	public function getType(): string
 	{
 		return $this->type;
 	}
 
 
 	/**
-	 * @param  bool
 	 * @return static
 	 */
-	public function setFinal($state = TRUE)
+	public function setFinal(bool $state = TRUE)
 	{
 		$this->final = (bool) $state;
 		return $this;
 	}
 
 
-	/**
-	 * @return bool
-	 */
-	public function isFinal()
+	public function isFinal(): bool
 	{
 		return $this->final;
 	}
 
 
 	/**
-	 * @param  bool
 	 * @return static
 	 */
-	public function setAbstract($state = TRUE)
+	public function setAbstract(bool $state = TRUE)
 	{
 		$this->abstract = (bool) $state;
 		return $this;
 	}
 
 
-	/**
-	 * @return bool
-	 */
-	public function isAbstract()
+	public function isAbstract(): bool
 	{
 		return $this->abstract;
 	}
@@ -246,10 +231,9 @@ class ClassType
 
 
 	/**
-	 * @param  string
 	 * @return static
 	 */
-	public function addExtend($type)
+	public function addExtend(string $type)
 	{
 		$this->extends = (array) $this->extends;
 		$this->extends[] = (string) $type;
@@ -271,17 +255,16 @@ class ClassType
 	/**
 	 * @return string[]
 	 */
-	public function getImplements()
+	public function getImplements(): array
 	{
 		return $this->implements;
 	}
 
 
 	/**
-	 * @param  string
 	 * @return static
 	 */
-	public function addImplement($type)
+	public function addImplement(string $type)
 	{
 		$this->implements[] = (string) $type;
 		return $this;
@@ -302,17 +285,16 @@ class ClassType
 	/**
 	 * @return string[]
 	 */
-	public function getTraits()
+	public function getTraits(): array
 	{
 		return $this->traits;
 	}
 
 
 	/**
-	 * @param  string
 	 * @return static
 	 */
-	public function addTrait($trait)
+	public function addTrait(string $trait)
 	{
 		$this->traits[] = (string) $trait;
 		return $this;
@@ -340,10 +322,9 @@ class ClassType
 
 
 	/**
-	 * @param  string
 	 * @return static
 	 */
-	public function addComment($val)
+	public function addComment(string $val)
 	{
 		$this->comment .= $this->comment ? "\n$val" : $val;
 		return $this;
@@ -363,9 +344,8 @@ class ClassType
 
 	/**
 	 * @deprecated  use getConstants()
-	 * @return array
 	 */
-	public function getConsts()
+	public function getConsts(): array
 	{
 		trigger_error(__METHOD__ . '() is deprecated, use similar getConstants()', E_USER_DEPRECATED);
 		return array_map(function ($const) { return $const->getValue(); }, $this->consts);
@@ -374,11 +354,9 @@ class ClassType
 
 	/**
 	 * @deprecated  use addConstant()
-	 * @param  string
-	 * @param  mixed
 	 * @return static
 	 */
-	public function addConst($name, $value)
+	public function addConst(string $name, $value)
 	{
 		trigger_error(__METHOD__ . '() is deprecated, use similar addConstant()', E_USER_DEPRECATED);
 		$this->addConstant($name, $value);
@@ -404,18 +382,13 @@ class ClassType
 	/**
 	 * @return Constant[]
 	 */
-	public function getConstants()
+	public function getConstants(): array
 	{
 		return $this->consts;
 	}
 
 
-	/**
-	 * @param  string
-	 * @param  mixed
-	 * @return Constant
-	 */
-	public function addConstant($name, $value)
+	public function addConstant(string $name, $value): Constant
 	{
 		return $this->consts[$name] = (new Constant($name))->setValue($value);
 	}
@@ -441,16 +414,13 @@ class ClassType
 	/**
 	 * @return Property[]
 	 */
-	public function getProperties()
+	public function getProperties(): array
 	{
 		return $this->properties;
 	}
 
 
-	/**
-	 * @return Property
-	 */
-	public function getProperty($name)
+	public function getProperty($name): Property
 	{
 		if (!isset($this->properties[$name])) {
 			throw new Nette\InvalidArgumentException("Property '$name' not found.");
@@ -461,10 +431,8 @@ class ClassType
 
 	/**
 	 * @param  string  without $
-	 * @param  mixed
-	 * @return Property
 	 */
-	public function addProperty($name, $value = NULL)
+	public function addProperty(string $name, $value = NULL): Property
 	{
 		return $this->properties[$name] = (new Property($name))->setValue($value);
 	}
@@ -490,16 +458,13 @@ class ClassType
 	/**
 	 * @return Method[]
 	 */
-	public function getMethods()
+	public function getMethods(): array
 	{
 		return $this->methods;
 	}
 
 
-	/**
-	 * @return Method
-	 */
-	public function getMethod($name)
+	public function getMethod($name): Method
 	{
 		if (!isset($this->methods[$name])) {
 			throw new Nette\InvalidArgumentException("Method '$name' not found.");
@@ -508,11 +473,7 @@ class ClassType
 	}
 
 
-	/**
-	 * @param  string
-	 * @return Method
-	 */
-	public function addMethod($name)
+	public function addMethod(string $name): Method
 	{
 		$method = (new Method($name))->setNamespace($this->namespace);
 		if ($this->type === 'interface') {

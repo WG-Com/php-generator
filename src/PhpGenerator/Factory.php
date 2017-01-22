@@ -19,10 +19,7 @@ class Factory
 {
 	use Nette\SmartObject;
 
-	/**
-	 * @return ClassType
-	 */
-	public function fromClassReflection(\ReflectionClass $from)
+	public function fromClassReflection(\ReflectionClass $from): ClassType
 	{
 		$class = $from->isAnonymous()
 			? new ClassType
@@ -53,10 +50,7 @@ class Factory
 	}
 
 
-	/**
-	 * @return Method
-	 */
-	public function fromFunctionReflection(\ReflectionFunctionAbstract $from)
+	public function fromFunctionReflection(\ReflectionFunctionAbstract $from): Method
 	{
 		$method = new Method($from->isClosure() ? NULL : $from->getName());
 		$params = [];
@@ -83,10 +77,7 @@ class Factory
 	}
 
 
-	/**
-	 * @return Parameter
-	 */
-	public function fromParameterReflection(\ReflectionParameter $from)
+	public function fromParameterReflection(\ReflectionParameter $from): Parameter
 	{
 		$param = new Parameter($from->getName());
 		$param->setReference($from->isPassedByReference());
@@ -102,10 +93,7 @@ class Factory
 	}
 
 
-	/**
-	 * @return Property
-	 */
-	public function fromPropertyReflection(\ReflectionProperty $from)
+	public function fromPropertyReflection(\ReflectionProperty $from): Property
 	{
 		$prop = new Property($from->getName());
 		$prop->setValue($from->getDeclaringClass()->getDefaultProperties()[$prop->getName()] ?? NULL);

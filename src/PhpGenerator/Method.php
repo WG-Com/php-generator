@@ -65,10 +65,7 @@ class Method extends Member
 	}
 
 
-	/**
-	 * @param  string|NULL
-	 */
-	public function __construct($name = NULL)
+	public function __construct(string $name = NULL)
 	{
 		parent::__construct((string) $name);
 	}
@@ -77,7 +74,7 @@ class Method extends Member
 	/**
 	 * @return string  PHP code
 	 */
-	public function __toString()
+	public function __toString(): string
 	{
 		$parameters = [];
 		foreach ($this->parameters as $param) {
@@ -132,7 +129,7 @@ class Method extends Member
 	/**
 	 * @return Parameter[]
 	 */
-	public function getParameters()
+	public function getParameters(): array
 	{
 		return $this->parameters;
 	}
@@ -140,9 +137,8 @@ class Method extends Member
 
 	/**
 	 * @param  string  without $
-	 * @return Parameter
 	 */
-	public function addParameter($name, $defaultValue = NULL)
+	public function addParameter(string $name, $defaultValue = NULL): Parameter
 	{
 		$param = new Parameter($name);
 		if (func_num_args() > 1) {
@@ -162,19 +158,13 @@ class Method extends Member
 	}
 
 
-	/**
-	 * @return array
-	 */
-	public function getUses()
+	public function getUses(): array
 	{
 		return $this->uses;
 	}
 
 
-	/**
-	 * @return Parameter
-	 */
-	public function addUse($name)
+	public function addUse($name): Parameter
 	{
 		return $this->uses[] = new Parameter($name);
 	}
@@ -201,10 +191,9 @@ class Method extends Member
 
 
 	/**
-	 * @param  string
 	 * @return static
 	 */
-	public function addBody($code, array $args = NULL)
+	public function addBody(string $code, array $args = NULL)
 	{
 		$this->body .= ($args === NULL ? $code : Helpers::formatArgs($code, $args)) . "\n";
 		return $this;
@@ -212,120 +201,96 @@ class Method extends Member
 
 
 	/**
-	 * @param  bool
 	 * @return static
 	 */
-	public function setStatic($val)
+	public function setStatic(bool $val)
 	{
 		$this->static = (bool) $val;
 		return $this;
 	}
 
 
-	/**
-	 * @return bool
-	 */
-	public function isStatic()
+	public function isStatic(): bool
 	{
 		return $this->static;
 	}
 
 
 	/**
-	 * @param  bool
 	 * @return static
 	 */
-	public function setFinal($val)
+	public function setFinal(bool $val)
 	{
 		$this->final = (bool) $val;
 		return $this;
 	}
 
 
-	/**
-	 * @return bool
-	 */
-	public function isFinal()
+	public function isFinal(): bool
 	{
 		return $this->final;
 	}
 
 
 	/**
-	 * @param  bool
 	 * @return static
 	 */
-	public function setAbstract($val)
+	public function setAbstract(bool $val)
 	{
 		$this->abstract = (bool) $val;
 		return $this;
 	}
 
 
-	/**
-	 * @return bool
-	 */
-	public function isAbstract()
+	public function isAbstract(): bool
 	{
 		return $this->abstract;
 	}
 
 
 	/**
-	 * @param  bool
 	 * @return static
 	 */
-	public function setReturnReference($val)
+	public function setReturnReference(bool $val)
 	{
 		$this->returnReference = (bool) $val;
 		return $this;
 	}
 
 
-	/**
-	 * @return bool
-	 */
-	public function getReturnReference()
+	public function getReturnReference(): bool
 	{
 		return $this->returnReference;
 	}
 
 
 	/**
-	 * @param  bool
 	 * @return static
 	 */
-	public function setReturnNullable($val)
+	public function setReturnNullable(bool $val)
 	{
 		$this->returnNullable = (bool) $val;
 		return $this;
 	}
 
 
-	/**
-	 * @return bool
-	 */
-	public function getReturnNullable()
+	public function getReturnNullable(): bool
 	{
 		return $this->returnNullable;
 	}
 
 
 	/**
-	 * @param  bool
 	 * @return static
 	 */
-	public function setVariadic($val)
+	public function setVariadic(bool $val)
 	{
 		$this->variadic = (bool) $val;
 		return $this;
 	}
 
 
-	/**
-	 * @return bool
-	 */
-	public function isVariadic()
+	public function isVariadic(): bool
 	{
 		return $this->variadic;
 	}
