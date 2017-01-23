@@ -17,7 +17,7 @@ use Nette;
  *
  * @property mixed $value
  */
-class Property extends Member
+final class Property extends Member
 {
 	/** @var mixed */
 	private $value;

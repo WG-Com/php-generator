@@ -15,7 +15,7 @@ use Nette;
 /**
  * Class constant.
  */
-class Constant extends Member
+final class Constant extends Member
 {
 	/** @var mixed */
 	private $value;

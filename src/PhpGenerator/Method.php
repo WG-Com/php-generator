@@ -17,7 +17,7 @@ use Nette;
  *
  * @property string|NULL $body
  */
-class Method extends Member
+final class Method extends Member
 {
 	/** @var array of name => Parameter */
 	private $parameters = [];
