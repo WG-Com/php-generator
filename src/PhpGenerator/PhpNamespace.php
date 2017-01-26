@@ -39,7 +39,7 @@ final class PhpNamespace
 	private $classes = [];
 
 
-	public function __construct(string $name = NULL)
+	public function __construct(/*string*/ $name)
 	{
 		$this->name = (string) $name;
 	}
